@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>oscillator.js - BufferSource example</title>
+<script type="text/javascript" src="../oscillator.js"></script>
+<script type="text/javascript">
+
+window.onload=function(){
+
+	// Create an audio context
+	var audioCtx=new AudioContext();
+
+	// Create a sine wave oscillator
+	var sineOscillator=new Oscillator.sine(audioCtx.sampleRate);
+
+	// Create a stereo buffer
+	var duration=3;
+	var bufferLength=duration*audioCtx.sampleRate;
+	var buffer=audioCtx.createBuffer(2, bufferLength, audioCtx.sampleRate);
+
+	// Write the buffer data
+	var leftChannelData=buffer.getChannelData(0);
+	var rightChannelData=buffer.getChannelData(1);
+	for(var sample=0; sample < bufferLength; sample++){
+
+		// Plot the waveform
+		leftChannelData[sample]=rightChannelData[sample]=sineOscillator.plot(440);
+	}
+
+	// Play the buffer when clicking on the button
+	document.getElementById('btn_play').addEventListener('click', function(){
+		var source=audioCtx.createBufferSource();
+		source.buffer=buffer;
+		source.connect(audioCtx.destination);
+		source.start(0);
+	});
+
+};
+
+</script>
+</head>
+<body>
+
+<div>
+<input type="button" id="btn_play" value="Play" />
+</div>
+
+</body>
+</html>

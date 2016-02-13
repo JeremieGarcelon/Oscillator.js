@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>oscillator.js - ScriptProcessorNode example</title>
+<script type="text/javascript" src="../oscillator.js"></script>
+<script type="text/javascript">
+
+window.onload=function(){
+
+	// Create an audio context
+	var audioCtx=new AudioContext();
+
+	// Create a sine wave oscillator
+	var sineOscillator=new Oscillator.sine(audioCtx.sampleRate);
+
+	// Create a ScriptProcessorNode
+	var playing=false;
+	var lftChannel, rgtChannel, sample;
+	var bufferSize=256;
+	var outputScriptProcessor=audioCtx.createScriptProcessor(bufferSize, 0, 2);
+	outputScriptProcessor.onaudioprocess=function(e){
+
+		// Nasty but simplest way to handle play/stop
+		if(playing == true){
+
+			// Write the buffer data
+			lftChannel=e.outputBuffer.getChannelData(0);
+			rgtChannel=e.outputBuffer.getChannelData(1);
+			for(sample=0; sample < bufferSize; sample++){
+
+				// Plot the waveform
+				lftChannel[sample]=rgtChannel[sample]=sineOscillator.plot(440);
+			}
+		}
+	};
+	outputScriptProcessor.connect(audioCtx.destination);
+
+	// Play button click
+	document.getElementById('btn_play').addEventListener('click', function(){
+
+		// Reset the oscillator phase
+		sineOscillator.rephase();
+
+		playing=true;
+	});
+
+	// Stop button click
+	document.getElementById('btn_stop').addEventListener('click', function(){
+		playing=false;
+	});
+
+};
+
+</script>
+</head>
+<body>
+
+<div>
+<input type="button" id="btn_play" value="Play" />
+<input type="button" id="btn_stop" value="Stop/Reset" />
+</div>
+
+</body>
+</html>
