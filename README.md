@@ -3,7 +3,8 @@
 ## Way to write buffers
 
 Oscillator.js is :
-- the Javascript transposition of an oscillator algorithm written originally in C++.
+- a **javascript oscillator**
+- the javascript transposition of an oscillator algorithm written originally in C++.
 - designed to work with the Web Audio API but without using any OscillatorNode.
 
 ##Examples
