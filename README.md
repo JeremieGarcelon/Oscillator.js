@@ -4,14 +4,14 @@
 
 Oscillator.js is :
 - a **javascript oscillator**
-- the javascript transposition of an oscillator algorithm written originally in C++.
+- an oscillator algorithm (written originally in C++).
 - designed to work with the Web Audio API but without using any OscillatorNode.
 
 ##Examples
 
 Browse the basic usage examples:
-- BufferSource: [/examples/buffer-source.html](JeremieGarcelon/Oscillator.js/blob/master/examples/buffer-source.html)
-- ScriptProcessorNode: [/examples/script-processor.html](JeremieGarcelon/Oscillator.js/blob/master/examples/script-processor.html)
+- BufferSource: [/examples/buffer-source.html](https://github.com/JeremieGarcelon/Oscillator.js/blob/master/examples/buffer-source.html)
+- ScriptProcessorNode: [/examples/script-processor.html](https://github.com/JeremieGarcelon/Oscillator.js/blob/master/examples/script-processor.html)
 
 ## Oscillator types
 
