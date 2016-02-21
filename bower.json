@@ -1,0 +1,20 @@
+{
+  "name": "Oscillator.js",
+  "version": "v1.0.0",
+  "homepage": "https://github.com/JeremieGarcelon/Oscillator.js",
+  "authors": [
+    "JeremieGarcelon <plkt@plkt.fr>"
+  ],
+  "description": "Javascript oscillator : Way to write buffers",
+  "main": "oscillator.js",
+  "moduleType": [],
+  "keywords": [
+    "oscillator"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "examples",
+    "README.md"
+  ]
+}
